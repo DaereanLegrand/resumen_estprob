@@ -1,0 +1,261 @@
+\documentclass{article} 
+\usepackage[spanish]{babel} 
+\usepackage{graphicx}
+
+\title{Resumen Estadística y Probabilidad}
+\author{Frank Salas}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Síntesis de lo desarrollado en clases durante todo el semestre.
+    
+\end{abstract}
+
+\subsection*{¿Qué es una variable aleatoria?}
+Es una función que busca etiquetar los resultados de un espacio muestral a través de un número. A través de dicha etiqueta podemos divir el espacio muestral en subconjuntos, más conocidos como eventos.
+\subsubsection*{Ejemplo}
+Si la variable aleatoria \textit{\textbf{X}} es el número de caras que resultan al tirar una moneda 3 veces, el rango de \textit{\textbf{X}} es \textit{\textbf{$R_x$}} = \{0, 1, 2, 3\}, entonces,
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{X} & \textbf{P(X = x)} \\
+        \hline
+        0 & $1/8$ \\
+        \hline
+        1 & $3/8$ \\
+        \hline
+        2 & $3/8$ \\
+        \hline
+        3 & $1/8$ \\
+        \hline
+    \end{tabular}
+    
+\end{center}
+
+\subsection*{Combinaciones y Permutaciones}
+Donde $n$ es la cantidad total de la que se puede escojer y $r$ la cantidad que se debe escoger. \\
+\subsubsection*{Combinaciones}
+Cuando el orden no es importante, \\
+\[ C^{n}_{r}=\ _{n}C_{r}=\frac{n!}{r!(n-r)!} \]
+\subsubsection*{Permutaciones}
+Cuando el orden si es importante, \\
+\[ P^{n}_{r}=\ _{n}P_{r}=\frac{n!}{(n-r)!} \]
+
+\section{Variable Aleatoria Discreta} 
+\subsection{Función de probabilidad y función de distribución acumulada}
+Sea X una variable aleatoria discreta. Una función de probabilidad de X es $f(X)$ y satisface las siguientes condiciones:
+
+\begin{itemize}
+    \item $f(x)\geq0$
+    \item $\sum_{x_{i}\in R_{x}} f(x_{i})=1$
+\end{itemize}
+
+\subsubsection{Media o esperanza matemática de la función y varianza}
+\[
+    E(X) = \mu = \sum f(x_{i})x_{i}
+\]
+\[
+    V(X) = \sigma^{2} = \sum f(x_{i}) x_{i}^{2} - \mu^{2}
+\]
+
+\subsection{Función de distribución acumulada de variable aleatoria discreta}
+Como su nombre lo dice, es la misma pero acumulada, desde el menor valor que puede llegar a tener la variable aleatoria hasta el máximo valor.\\
+
+\[
+    F(x) = P[X\leq x]=\sum_{k\leq x}P[X = k] = \sum_{k\leq x}f(k)
+\]
+
+Para cualquier valor menor que x puede tener en $f(x)$ el resultado siempre será 0, y si el valor es mayor al que x puede llegar a ser es 1.\\
+
+\subsection{Ensayos de Bernoulii}
+El espacio muestral esta conformado por exito y fracaso.
+
+\subsubsection{Variable aleatoria Binomial}
+Un número fijo de veces, que se hace el ensayo de Bernoulii. Por ejemplo, sacar bolas de una urna conreemplazo.\\
+
+\subsubsection*{Experimento binomial}
+Condiciones para que sea un experimento binomial:\\
+\begin{enumerate}
+    \item El experimento consta de $n$ ensayos idénticos.
+    \item Solo hay dos resultados posibles, exito o fracaso.
+    \item La probabilidad de exito nunca cambia, por lo que la de fracaso tampoco.
+    \item Los ensayos son independientes.
+\end{enumerate}
+Formula: \\
+Para un experimento binomial, siendo p la probabilidad de exito, 1 - p la probabilidad de fracaso, n la cantidad de ensayos hechos y x la cantidad de exitos.\\
+\[ f(x)=P(X=x)={n\choose x}p^{x}(1-p)^{n-x},\ para\ x\ =\ 0,1,2,..,n \]
+Media:\\
+\[\mu = np\]
+Varianza:\\
+\[\sigma^{2}=npq\]
+
+\subsubsection{Variable aleatoria Geométrica}
+Se repite el ensayo de Bernoulii hasta que se consiga un exito.\\
+
+\subsubsection*{Ensayo Geométrico}
+\begin{enumerate}
+    \item Solo hay dos resultados posibles, exito o fracaso.
+    \item La probabilidad de exito nunca cambia, por lo que la de fracaso tampoco.
+    \item Los ensayos son independientes.
+\end{enumerate}
+Formula:\\
+Para un experimento geométrico, siendo p la probabilidad de exito, 1 - p la probabilidad de fracaso y x la cantidad de ensayos necesarios hasta el primer exito.\\
+\[ f(x)=P(X=x)=q^{x-1}p,\ para\ x\ =\ 1,2,3,4, ... \]
+Media:\\
+\[\mu=\frac{1}{p}\]
+Varianza:
+\[\sigma^{2}=\frac{1-p}{p^{2}}\]
+
+\subsubsection{Variable aleatoria Pascal}
+Se repite el ensayo de Bernoulii hasta que salgan \textit{r} exitos.
+
+\subsubsection*{Ensayo de Pascal}
+\begin{enumerate}
+    \item Solo hay dos resultados posibles, exito o fracaso.
+    \item La probabilidad de exito nunca cambia, por lo que la de fracaso tampoco.
+    \item Los ensayos son independientes.
+    \item Similar al ensayo geométrico, la diferencia es la cantidad de exitos.
+\end{enumerate}
+Formula:\\
+Para un experimento de pascal, siendo p la probabilidad de exito, 1 - p la probabilidad de fracaso, r la cantidad de exitos y x la cantidad de ensayos para llegar a todos los exitos.\\
+\[ f(x)=P(X=x)={x-1\choose r-1}p^{r}q^{x-r},\ para\ x\ =\ 1,2,3,4, ... \]
+Media:\\
+\[\mu=\frac{r}{p}\]
+Varianza:
+\[\sigma^{2}=\frac{1-p\times r}{p^{2}}\]
+
+\subsubsection{Variable aleatoria Poisson}
+Es el número de veces que ocurre un evento durante un intervalo definido. El intervalo puede ser de tiempo, área, volumen, etc.\\
+
+\subsubsection*{Ensayo de Poisson}
+\begin{enumerate}
+    \item La probabilidad de ocurrencia es la misma para cualesquiera dos intervalos de igual longitud.
+    \item Las ocurrencias son independientes.
+    \item Dos ocurrencias no pueden ocurrir al mismo tiempo.
+\end{enumerate}
+Formula:\\
+Para un experimento de poisson, se tiene como parámetro a la media o valor esperado $\mu\ (\mu>0)$, x la cantidad de ocurrencias en el intervalo. \\
+\[ f(x)=P(X=x)={\frac{e^{-\mu}\times\mu^{x}}{x!}},\ para\ x\ =\ 0,1,2,3,...\]
+Media:\\
+\[\mu=\mu\]
+Varianza:
+\[\sigma^{2}=\mu\]
+
+\subsubsection{Variable aleatoria Hipergeométrica}
+Es como la distribución binomial pero los eventos no son independientes, por lo que las probabilidad varian. Por ejemplo, sacar bolas de una urna sin reemplazar.\\
+\begin{enumerate}
+    \item Las probabilidades de exito o fracaso varian.
+    \item Los eventos no son independientes.
+\end{enumerate}
+Formula:\\
+Para un experimento de hipergeométrica, N es la cantidad total entre exitos y fracasos, a es la cantidad de exitos en la población, N - a la cantidad de fracasos en la población, n la muestra y x la cantidad de exitos en la muestra. \\
+\[ f(x)=P(X=x)={\frac{{a \choose x}{N - a \choose n - x}}{{N \choose n}}},\ para\ x\ =Max(0, n + a - N),...,Min(a,n) \]
+Media:\\
+\[\mu=n\frac{a}{N}\]
+Varianza:
+\[\sigma^{2}=npq\frac{N-n}{N-1}\]
+
+
+%======================================================================================
+\section{Variable Aleatoria Continua}
+Cuando el espacio muestral no esta limitado por los números enteros o son demasiados usamos las variables aleatorias continuas.
+
+\subsection*{Ejemplos}
+\begin{itemize}
+    \item Estatura 
+    \item Peso
+    \item Nivel de hemoglobina
+    \item Nota del promedio ponderado
+\end{itemize}
+Estos ejemplos caen en un intervalo, por su naturaleza decimal. \\
+
+\subsection{Función Densidad}
+Es una función que sirve para ver como se comporta dicha variable aleatoria continua. Esta función puede ser vista como una curva. Además la función densidad debe de ser no negativa.
+
+La integral de la función densidad es igual a 1.
+
+\[\int_{a}^{b}f(x)dx = 1\]
+
+Para hallar la probabilidad de que una variable este en un intervalo determinado se halla con la misma formula modificando los valores de \textit{a} y \textit{b}. Esto se hace porque hallar $P(X = x) = 0 \forall x \in \textsf{I\kern-.3ex R}$.
+
+\[\int_{c}^{c}f(x)dx = 0\]
+
+\subsubsection*{Definición}
+Una función densidad para X es una función real f que cumple con los siguientes requisitos.
+\begin{enumerate}
+    \item $f(x) \geq 0 \qquad \forall x \in Rango\ (X) $    
+    \item $\int_{-\infty}^{\infty}f(x)dx=1$ \\
+        en este caso 
+        \[P(a < X < b) = \int_{a}^{b}f(x)dx = P(a \leq X \leq b)\]
+\end{enumerate}
+
+\subsubsection*{Distribución acumulada}
+La función de distribución acumulada es definida por
+\[F(x)=\int_{-\infty}^{x}f(x)dx\]
+Además
+\[\frac{d}{dx}F(x)=f(x),\ \int f(x) dx = F(x)\]
+
+\subsubsection*{Esperanza matemática}
+\[\mu = E(x)=\int_{-\infty}^{\infty}xf(x)dx\]
+
+\subsubsection*{Varianza}
+\[\sigma^{2} = V(x)=\int_{-\infty}^{\infty}(x-\mu)^{2}f(x)dx\]
+
+\subsubsection*{Desviación estandar}
+\[\sigma = \sqrt{\sigma^{2}}\]
+
+\subsection{Distribución Uniforme}
+\subsubsection*{Definición y Propiedades}
+\begin{itemize}
+    \item $X\sim Exp(\beta)$ Si su función densidad se define como,
+        \[
+            f(x)= \left\{ \begin{array}{lc}
+                \frac{1}{d-c} &   si\ c \leq x\leq d\\
+                         \\ 0 & en\ caso\ contrario.\\
+                         \end{array}
+               \right.
+        \]
+    \item $\mu=\frac{c+d}{2}$
+    \item $\sigma^{2}=V(X)=\frac{1}{12}(d-c)^{2}$
+    \item $F(x)=P(X < x)=f(x)(-\infty)(x)$
+\end{itemize}
+
+
+\subsection{Distribución Exponencial}
+\subsubsection*{Definición y Propiedades}
+\begin{itemize}
+    \item $X\sim Exp(\beta)$ Si su función densidad se define como,
+        \[
+            f(x;\lambda)= \left\{ \begin{array}{lc}
+                                \beta e^{-\beta x} &   si\ x\geq 0\\
+                                \\ 0 &  si\ x < 0 \\
+                         \end{array}
+               \right.
+        \]
+    \item $\mu=E(X)=\frac{1}{\beta}$
+    \item $\sigma^{2}=V(X)=\frac{1}{\beta^{2}}=\mu^{2}$
+    \item $F(x)=P(X < x)=\int^{x}_{0}\beta e^{-\beta x}dx=1-e^{-\beta x}$
+    \item $P(X > s + t/X > s)=P(X > t)$
+\end{itemize}
+
+\subsubsection*{Relación con distribución Poisson}
+Si X es el número de veces que ocurre un evento en un lapso de tiempo, Con un promedio de ocurrencias $\lambda$. Entonces el tiempo que ocurra el primer evento es,
+\[ t\sim Exp(\beta=\lambda) \]
+
+\subsection{Distribución Normal Estándar}
+\subsubsection*{Definición y Propiedades}
+\begin{itemize}
+    \item $Z\sim N(\mu=0;\sigma^{2}=1)$, si su función densidad es,
+        \[f(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{z^{2}}{2}}\]
+    \item $\phi(z)=P(Z\leq z)=\int^{z}_{-\infty}f(v)dv$
+    \item $\mu=E(Z)=0$
+    \item $\sigma^{2}=V(Z)=1$
+\end{itemize}
+\subsubsection*{Estandarización}
+\[z_{0}=\frac{x_{0}-\mu}{\sigma}\]
+
+\end{document}
